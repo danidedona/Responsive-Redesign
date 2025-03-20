@@ -1,41 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import AOS from "aos";
-
-import ProjectGrid from "./components/ProjectGrid";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import AccessibleComponents from "./pages/projects/accessible components/AccessibleComponents";
-import PersonasAndStoryboarding from "./pages/projects/personas and storyboarding/PersonasAndStoryboarding";
+
+const colors = {
+  bg: "#FFFFF7",
+};
 
 function App() {
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
-  }, []);
-  useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
-  }, []);
-
   return (
-    <div class="font-sans" style={{ paddingTop: "var(--navbar-height)" }}>
+    <div
+      className="font-poppins bg-[var(--color-bg)]"
+      style={{ paddingTop: "var(--navbar-height)", "--color-bg": colors.bg }}
+    >
       <nav id="nav">
         <Navbar />
       </nav>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/projects" element={<ProjectGrid />} />
-        <Route
-          path="/projects/AccessibleComponents"
-          element={<AccessibleComponents />}
-        />
-        <Route
-          path="/projects/PersonasAndStoryboarding"
-          element={<PersonasAndStoryboarding />}
-        />
-
-        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </div>
   );
